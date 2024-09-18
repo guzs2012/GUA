@@ -17,6 +17,20 @@
             padding: 10px 0;
             text-align: center;
         }
+        nav {
+            background-color: #003060;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
         h1, h2 {
             color: #004080;
         }
@@ -81,79 +95,88 @@
         <h1>Inicia tu Trámite con Aseguradoras</h1>
     </header>
 
-    <section>
-        <h2>Selecciona tu Aseguradora</h2>
-        <label for="aseguradora">Aseguradora:</label>
-        <select id="aseguradora" name="aseguradora" required>
-            <option value="">-- Selecciona una aseguradora --</option>
-            <option value="METLIFE">METLIFE</option>
-            <option value="SEGUROS MONTERREY">SEGUROS MONTERREY</option>
-            <option value="AXA SEGUROS">AXA SEGUROS</option>
-            <option value="BBVA">BBVA</option>
-            <option value="GNP">GNP</option>
-            <option value="MAPFRE">MAPFRE</option>
-            <option value="BX+">BX+</option>
-            <option value="BANORTE">BANORTE</option>
-            <option value="BUPA">BUPA</option>
-            <option value="INBURSA">INBURSA</option>
-            <option value="ALLIANZ">ALLIANZ</option>
-            <option value="GENERAL DE SALUD">GENERAL DE SALUD</option>
-            <option value="PLAN SEGURO">PLAN SEGURO</option>
-            <option value="SEMEDIC">SEMEDIC</option>
-            <option value="SISNOVA">SISNOVA</option>
-            <option value="SURA">SURA</option>
-            <option value="ZURICH">ZURICH</option>
-            <option value="ATLAS">ATLAS</option>
-        </select>
-    </section>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="#">Inicia tu Trámite</a>
+        <a href="#">Servicios</a>
+        <a href="#">Contacto</a>
+    </nav>
 
-    <section>
-        <h2>¿Es la primera vez que registras esta aseguradora?</h2>
-        <label><input type="radio" name="registro" value="primeraVez" onchange="showDocuments()"> Sí, es la primera vez</label>
-        <label><input type="radio" name="registro" value="registroPrevio" onchange="showDocuments()"> No, ya tengo un registro previo</label>
-    </section>
+    <form action="send_email.php" method="post" enctype="multipart/form-data">
+        <section>
+            <h2>Selecciona tu Aseguradora</h2>
+            <label for="aseguradora">Aseguradora:</label>
+            <select id="aseguradora" name="aseguradora" required>
+                <option value="">-- Selecciona una aseguradora --</option>
+                <option value="METLIFE">METLIFE</option>
+                <option value="SEGUROS MONTERREY">SEGUROS MONTERREY</option>
+                <option value="AXA SEGUROS">AXA SEGUROS</option>
+                <option value="BBVA">BBVA</option>
+                <option value="GNP">GNP</option>
+                <option value="MAPFRE">MAPFRE</option>
+                <option value="BX+">BX+</option>
+                <option value="BANORTE">BANORTE</option>
+                <option value="BUPA">BUPA</option>
+                <option value="INBURSA">INBURSA</option>
+                <option value="ALLIANZ">ALLIANZ</option>
+                <option value="GENERAL DE SALUD">GENERAL DE SALUD</option>
+                <option value="PLAN SEGURO">PLAN SEGURO</option>
+                <option value="SEMEDIC">SEMEDIC</option>
+                <option value="SISNOVA">SISNOVA</option>
+                <option value="SURA">SURA</option>
+                <option value="ZURICH">ZURICH</option>
+                <option value="ATLAS">ATLAS</option>
+            </select>
+        </section>
 
-    <!-- Documentos para la primera vez -->
-    <section id="primeraVezDocs" class="hidden">
-        <h2>Documentos para la primera vez con esta aseguradora</h2>
-        <label for="identificacion">Identificación Oficial</label>
-        <input type="file" id="identificacion" name="identificacion">
-        
-        <label for="estadoCuenta">Estado de Cuenta (no mayor a 3 meses)</label>
-        <input type="file" id="estadoCuenta" name="estadoCuenta">
+        <section>
+            <h2>¿Es la primera vez que registras esta aseguradora?</h2>
+            <label><input type="radio" name="registro" value="primeraVez" onchange="showDocuments()"> Sí, es la primera vez</label>
+            <label><input type="radio" name="registro" value="registroPrevio" onchange="showDocuments()"> No, ya tengo un registro previo</label>
+        </section>
 
-        <label for="cedulaGeneral">Cédula Médico General</label>
-        <input type="file" id="cedulaGeneral" name="cedulaGeneral">
+        <!-- Documentos para la primera vez -->
+        <section id="primeraVezDocs" class="hidden">
+            <h2>Documentos para la primera vez con esta aseguradora</h2>
+            <label for="identificacion">Identificación Oficial</label>
+            <input type="file" id="identificacion" name="identificacion">
+            
+            <label for="estadoCuenta">Estado de Cuenta (no mayor a 3 meses)</label>
+            <input type="file" id="estadoCuenta" name="estadoCuenta">
 
-        <label for="cedulaEspecialidad">Cédula Especialidad</label>
-        <input type="file" id="cedulaEspecialidad" name="cedulaEspecialidad">
+            <label for="cedulaGeneral">Cédula Médico General</label>
+            <input type="file" id="cedulaGeneral" name="cedulaGeneral">
 
-        <label for="situacionFiscal">Constancia de Situación Fiscal (no mayor a 3 meses)</label>
-        <input type="file" id="situacionFiscal" name="situacionFiscal">
+            <label for="cedulaEspecialidad">Cédula Especialidad</label>
+            <input type="file" id="cedulaEspecialidad" name="cedulaEspecialidad">
 
-        <label for="certificadoSeguridad">Certificado de Seguridad SAT</label>
-        <input type="file" id="certificadoSeguridad" name="certificadoSeguridad">
+            <label for="situacionFiscal">Constancia de Situación Fiscal (no mayor a 3 meses)</label>
+            <input type="file" id="situacionFiscal" name="situacionFiscal">
 
-        <label for="clavePrivadaSAT">Clave Privada SAT</label>
-        <input type="file" id="clavePrivadaSAT" name="clavePrivadaSAT">
+            <label for="certificadoSeguridad">Certificado de Seguridad SAT</label>
+            <input type="file" id="certificadoSeguridad" name="certificadoSeguridad">
 
-        <label for="contrasenaSAT">Contraseña SAT (escribir manualmente)</label>
-        <input type="text" id="contrasenaSAT" name="contrasenaSAT">
+            <label for="clavePrivadaSAT">Clave Privada SAT</label>
+            <input type="file" id="clavePrivadaSAT" name="clavePrivadaSAT">
 
-        <label for="cartaAutorizacion">Carta de Autorización</label>
-        <input type="file" id="cartaAutorizacion" name="cartaAutorizacion">
-    </section>
+            <label for="contrasenaSAT">Contraseña SAT (escribir manualmente)</label>
+            <input type="text" id="contrasenaSAT" name="contrasenaSAT">
 
-    <!-- Documentos para registro previo -->
-    <section id="registroPrevioDocs" class="hidden">
-        <h2>Documentos para registros previos</h2>
-        <label for="cartaAutorizacionPrevio">Carta de Autorización</label>
-        <input type="file" id="cartaAutorizacionPrevio" name="cartaAutorizacionPrevio">
-    </section>
+            <label for="cartaAutorizacion">Carta de Autorización</label>
+            <input type="file" id="cartaAutorizacion" name="cartaAutorizacion">
+        </section>
 
-    <section>
-        <button type="submit">Enviar Trámite</button>
-    </section>
+        <!-- Documentos para registro previo -->
+        <section id="registroPrevioDocs" class="hidden">
+            <h2>Documentos para registros previos</h2>
+            <label for="cartaAutorizacionPrevio">Carta de Autorización</label>
+            <input type="file" id="cartaAutorizacionPrevio" name="cartaAutorizacionPrevio">
+        </section>
+
+        <section>
+            <button type="submit">Enviar Trámite</button>
+        </section>
+    </form>
 
 </body>
 </html>
