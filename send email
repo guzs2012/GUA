@@ -1,0 +1,22 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $to = "lugusalo22@gmail.com";
+    $subject = "Nuevo trámite de aseguradora";
+    
+    // Datos del formulario
+    $aseguradora = $_POST["aseguradora"];
+    $esPrimeraVez = isset($_POST["registro"]) ? $_POST["registro"] : '';
+    
+    // Aquí puedes preparar el mensaje que quieras enviar
+    $message = "Nueva solicitud de trámite.\n";
+    $message .= "Aseguradora: " . $aseguradora . "\n";
+    $message .= "Tipo de registro: " . ($esPrimeraVez == 'primeraVez' ? 'Primera vez' : 'Registro previo') . "\n";
+    
+    // Enviar correo
+    mail($to, $subject, $message);
+    
+    // Puedes agregar lógica para manejar los archivos si es necesario.
+    
+    echo "Tu trámite ha sido enviado con éxito.";
+}
+?>
