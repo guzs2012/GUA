@@ -3,90 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicia con tu Trámite</title>
+    <title>Inicia tu Trámite</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-            color: #333;
-        }
-        header {
-            background-color: #0e76a8;
-            color: white;
             padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #333;
-            color: white;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-        nav a:hover {
-            text-decoration: underline;
         }
         section {
-            padding: 20px;
-            margin: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
         }
         input[type="file"] {
-            display: block;
-            margin: 10px 0;
+            margin-top: 5px;
         }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px 0;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
+        .hidden {
+            display: none;
         }
     </style>
+    <script>
+        function showDocuments() {
+            var isFirstTime = document.querySelector('input[name="registro"]:checked').value;
+            
+            if (isFirstTime === "primeraVez") {
+                document.getElementById("primeraVezDocs").classList.remove("hidden");
+                document.getElementById("registroPrevioDocs").classList.add("hidden");
+            } else {
+                document.getElementById("registroPrevioDocs").classList.remove("hidden");
+                document.getElementById("primeraVezDocs").classList.add("hidden");
+            }
+        }
+    </script>
 </head>
 <body>
 
-    <header>
-        <h1>Inicia tu Trámite</h1>
-    </header>
+    <h1>Inicia tu Trámite</h1>
 
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="tramite.html">Inicia con tu Trámite</a>
-    </nav>
-
-    <section id="upload-section">
-        <h2>Sube los Documentos Necesarios</h2>
-        <form action="#" method="post" enctype="multipart/form-data">
-            <label for="document1">Identificación oficial (INE o pasaporte):</label>
-            <input type="file" id="document1" name="document1" accept="application/pdf,image/*" required>
-            
-            <label for="document2">Comprobante de domicilio:</label>
-            <input type="file" id="document2" name="document2" accept="application/pdf,image/*" required>
-
-            <label for="document3">Cédula profesional:</label>
-            <input type="file" id="document3" name="document3" accept="application/pdf,image/*" required>
-
-            <label for="document4">RFC:</label>
-            <input type="file" id="document4" name="document4" accept="application/pdf,image/*" required>
-
-            <button type="submit">Enviar Documentos</button>
-        </form>
+    <section>
+        <h2>Selecciona tu Aseguradora</h2>
+        <label for="aseguradora">Aseguradora:</label>
+        <select id="aseguradora" name="aseguradora" required>
+            <option value="">-- Selecciona una aseguradora --</option>
+            <option value="METLIFE">METLIFE</option>
+            <option value="SEGUROS MONTERREY">SEGUROS MONTERREY</option>
+            <option value="AXA SEGUROS">AXA SEGUROS</option>
+            <option value="BBVA">BBVA</option>
+            <option value="GNP">GNP</option>
+            <option value="MAPFRE">MAPFRE</option>
+            <option value="BX+">BX+</option>
+            <option value="BANORTE">BANORTE</option>
+            <option value="BUPA">BUPA</option>
+            <option value="INBURSA">INBURSA</option>
+            <option value="ALLIANZ">ALLIANZ</option>
+            <option value="GENERAL DE SALUD">GENERAL DE SALUD</option>
+            <option value="PLAN SEGURO">PLAN SEGURO</option>
+            <option value="SEMEDIC">SEMEDIC</option>
+            <option value="SISNOVA">SISNOVA</option>
+            <option value="SURA">SURA</option>
+            <option value="ZURICH">ZURICH</option>
+            <option value="ATLAS">ATLAS</option>
+        </select>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Servicios para Médicos - Todos los derechos reservados.</p>
-    </footer>
+    <section>
+        <h2>¿Es la primera vez que registras esta aseguradora?</h2>
+        <label><input type="radio" name="registro" value="primeraVez" onchange="showDocuments()"> Sí, es la primera vez</label>
+        <label><input type="radio" name="registro" value="registroPrevio" onchange="showDocuments()"> No, ya tengo un registro previo</label>
+    </section>
+
+    <!-- Documentos para la primera vez -->
+    <section id="primeraVezDocs" class="hidden">
+        <h2>Documentos para la primera vez con esta aseguradora</h2>
+        <label for="identificacion">Identificación Oficial</label>
+        <input type="file" id="identificacion" name="identificacion">
+        
+        <label for="estadoCuenta">Estado de Cuenta (no mayor a 3 meses)</label>
+        <input type="file" id="estadoCuenta" name="estadoCuenta">
+
+        <label for="cedulaGeneral">Cédula Médico General</label>
+        <input type="file" id="cedulaGeneral" name="cedulaGeneral">
+
+        <label for="cedulaEspecialidad">Cédula Especialidad</label>
+        <input type="file" id="cedulaEspecialidad" name="cedulaEspecialidad">
+
+        <label for="situacionFiscal">Constancia de Situación Fiscal (no mayor a 3 meses)</label>
+        <input type="file" id="situacionFiscal" name="situacionFiscal">
+
+        <label for="certificadoSeguridad">Certificado de Seguridad SAT</label>
+        <input type="file" id="certificadoSeguridad" name="certificadoSeguridad">
+
+        <label for="clavePrivadaSAT">Clave Privada SAT</label>
+        <input type="file" id="clavePrivadaSAT" name="clavePrivadaSAT">
+
+        <label for="contrasenaSAT">Contraseña SAT (escribir manualmente)</label>
+        <input type="text" id="contrasenaSAT" name="contrasenaSAT">
+
+        <label for="cartaAutorizacion">Carta de Autorización</label>
+        <input type="file" id="cartaAutorizacion" name="cartaAutorizacion">
+    </section>
+
+    <!-- Documentos para registro previo -->
+    <section id="registroPrevioDocs" class="hidden">
+        <h2>Documentos para registros previos</h2>
+        <label for="cartaAutorizacionPrevio">Carta de Autorización</label>
+        <input type="file" id="cartaAutorizacionPrevio" name="cartaAutorizacionPrevio">
+    </section>
 
 </body>
 </html>
