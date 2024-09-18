@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicia con tu Trámite</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+        header {
+            background-color: #0e76a8;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        nav a:hover {
+            text-decoration: underline;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            display: block;
+            margin: 10px 0;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Inicia tu Trámite</h1>
+    </header>
+
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="tramite.html">Inicia con tu Trámite</a>
+    </nav>
+
+    <section id="upload-section">
+        <h2>Sube los Documentos Necesarios</h2>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label for="document1">Identificación oficial (INE o pasaporte):</label>
+            <input type="file" id="document1" name="document1" accept="application/pdf,image/*" required>
+            
+            <label for="document2">Comprobante de domicilio:</label>
+            <input type="file" id="document2" name="document2" accept="application/pdf,image/*" required>
+
+            <label for="document3">Cédula profesional:</label>
+            <input type="file" id="document3" name="document3" accept="application/pdf,image/*" required>
+
+            <label for="document4">RFC:</label>
+            <input type="file" id="document4" name="document4" accept="application/pdf,image/*" required>
+
+            <button type="submit">Enviar Documentos</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Servicios para Médicos - Todos los derechos reservados.</p>
+    </footer>
+
+</body>
+</html>
